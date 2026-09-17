@@ -16,7 +16,7 @@ resource "aws_instance" "web_pub" {
   instance_type = "t3.micro"
   associate_public_ip_address = true
   subnet_id = aws_subnet.subnet-public.id
-  vpc_security_group_ids = [aws_security_group.sg-01.id]
+  vpc_security_group_ids = [aws_security_group.sg-02.id]
   key_name               = aws_key_pair.web.key_name
 
   tags = {
