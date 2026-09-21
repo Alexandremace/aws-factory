@@ -5,4 +5,9 @@ Deploy AWS infra with OpenTofu
 
 - awscli
 - opentofu
+- User IAM for tofu
 
+## Setup
+
+- aws configure
+- tofu init
