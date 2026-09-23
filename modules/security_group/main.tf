@@ -1,8 +1,7 @@
-resource "aws_security_group" "sg-01" {
+resource "aws_security_group" "private" {
   name        = "web-server-01-sg"
-  description = "SG-PRIV"
-  vpc_id      = aws_vpc.vpc01.id
-
+  description = "Security group for private web server"
+  vpc_id      = var.vpc_id
 
   egress {
     from_port   = 0
@@ -16,11 +15,10 @@ resource "aws_security_group" "sg-01" {
   }
 }
 
-
-resource "aws_security_group" "sg-02" {
+resource "aws_security_group" "public" {
   name        = "web-server-02-sg"
-  description = "SG-PUB"
-  vpc_id      = aws_vpc.vpc01.id
+  description = "Security group for public web server"
+  vpc_id      = var.vpc_id
 
   ingress {
     description = "SSH"

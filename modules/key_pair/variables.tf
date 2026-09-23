@@ -1,4 +1,4 @@
-variable "paths" {
+variable "key_path" {
+  description = "Path where the private SSH key will be stored"
   type        = string
-  default     = "/Users/ama/Downloads/web-server-key.pem"
 }

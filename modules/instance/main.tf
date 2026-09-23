@@ -1,23 +1,33 @@
 resource "aws_instance" "web_priv" {
-  ami           = "ami-00adafae70b8029d8"
-  instance_type = "t3.micro"
-  subnet_id = aws_subnet.subnet-private.id
-  vpc_security_group_ids = [aws_security_group.sg-01.id]
-  key_name               = aws_key_pair.web.key_name
+  ami           = var.ami_id
+  instance_type = var.instance_type
+
+  subnet_id = var.private_subnet_id
+
+  vpc_security_group_ids = [
+    var.private_security_group_id
+  ]
+
+  key_name = var.key_name
 
   tags = {
     Name = "web-server-01"
   }
 }
 
-
 resource "aws_instance" "web_pub" {
-  ami           = "ami-00adafae70b8029d8"
-  instance_type = "t3.micro"
+  ami           = var.ami_id
+  instance_type = var.instance_type
+
   associate_public_ip_address = true
-  subnet_id = aws_subnet.subnet-public.id
-  vpc_security_group_ids = [aws_security_group.sg-02.id]
-  key_name               = aws_key_pair.web.key_name
+
+  subnet_id = var.public_subnet_id
+
+  vpc_security_group_ids = [
+    var.public_security_group_id
+  ]
+
+  key_name = var.key_name
 
   tags = {
     Name = "web-server-02"

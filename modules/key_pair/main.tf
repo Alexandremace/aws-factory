@@ -10,6 +10,6 @@ resource "aws_key_pair" "web" {
 
 resource "local_sensitive_file" "web_private_key" {
   content         = tls_private_key.web.private_key_pem
-  filename        = var.paths
+  filename        = var.key_path
   file_permission = "0400"
 }
